@@ -6,7 +6,7 @@
 /*   By: facarval <facarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 11:58:38 by facarval          #+#    #+#             */
-/*   Updated: 2024/05/21 10:11:22 by facarval         ###   ########.fr       */
+/*   Updated: 2024/06/03 18:20:58 by facarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,14 @@
 #include <cerrno>
 #include <cmath>
 #include <ios>
+
+const std::string red("\033[1;31m");
+const std::string green("\033[1;32m");
+const std::string yellow("\033[1;33m");
+const std::string blue("\033[1;34m");
+const std::string cyan("\033[1;36m");
+const std::string magenta("\033[1;35m");
+const std::string reset("\033[0m");
 
 enum
 {

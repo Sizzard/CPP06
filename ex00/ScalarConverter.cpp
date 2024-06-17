@@ -6,7 +6,7 @@
 /*   By: facarval <facarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 11:58:46 by facarval          #+#    #+#             */
-/*   Updated: 2024/05/21 10:11:02 by facarval         ###   ########.fr       */
+/*   Updated: 2024/06/04 10:26:25 by facarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void from_char(long long res)
     else if (isprint(res) == 0)
         std::cout << "char: non displayable" << std::endl;
     else
-        std::cout << "char: " << static_cast<char>(res) << std::endl;
+        std::cout << "char: '" << static_cast<char>(res) << "'" << std::endl;
     if (res > 2147483647 || res < -2147483648)
         std::cout << "int: impossible" << std::endl;
     else
@@ -54,7 +54,7 @@ void from_int(long long integer)
     else if (isprint(integer) == 0)
         std::cout << "char: non displayable" << std::endl;
     else
-        std::cout << "char: " << static_cast<char>(integer) << std::endl;
+        std::cout << "char: '" << static_cast<char>(integer) << "'" << std::endl;
     if (integer > 2147483647 || integer < -2147483648)
         std::cout << "int: impossible" << std::endl;
     else
@@ -70,7 +70,7 @@ void from_float(std::string const &str, float floating)
     else if (isprint(floating) == 0)
         std::cout << "char: non displayable" << std::endl;
     else
-        std::cout << "char: " << static_cast<char>(floating) << std::endl;
+        std::cout << "char: '" << static_cast<char>(floating) << "'" << std::endl;
     if (floating > 2147483647.0 || floating < -2147483648)
         std::cout << "int: impossible" << std::endl;
     else
@@ -96,7 +96,7 @@ void from_double(std::string const &str, double doubl)
     else if (isprint(doubl) == 0)
         std::cout << "char: non displayable" << std::endl;
     else
-        std::cout << "char: " << static_cast<char>(doubl) << std::endl;
+        std::cout << "char: '" << static_cast<char>(doubl) << "'" << std::endl;
     if (doubl > 2147483647 || doubl < -2147483648)
         std::cout << "int: impossible" << std::endl;
     else
@@ -166,7 +166,7 @@ int detect_type(std::string const &str)
 bool special_case(std::string const &str)
 {
     double nb = std::strtod(str.c_str(), NULL);
-    
+
     if (errno != 0)
     {
         std::cout << "Char: impossible\nInt: impossible\nFloat: impossible" << std::endl
@@ -200,6 +200,12 @@ void ScalarConverter::convert(std::string str)
 
     int type = detect_type(str);
     std::stringstream ss;
+
+    if (str.empty() == true)
+    {
+        std::cout << "Char: non displayable\nInt: 0\nFloat: 0.0f\nDouble: 0.0" << std::endl;
+        return;
+    }
 
     if (strncmp(str.c_str(), ".", 1) == 0)
     {
